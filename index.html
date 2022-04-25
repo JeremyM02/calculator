@@ -44,7 +44,18 @@
     calculateButton.addEventListener('click', checkOperation);
     let answer;
 
+    function checkValidation(){
+        let first = Number(a.value);
+        let second = Number(b.value);
+        return first && second;
+    }
     function checkOperation(){
+        if (!checkValidation()){
+            const text = document.createElement('p');
+            text.innerHTML = `Invalid Values`;
+            calculations.insertAdjacentElement('afterbegin', text);
+            return;
+        }
         let operation = operator.value;
         switch (operation){
             case 'add':
@@ -64,12 +75,12 @@
 
             case 'divide':
                console.log('DIVIDE');
-               multiply();
+               divide();
                break;
 
             case 'modulo':
                 console.log('MODULO');
-                divide();
+                modulo();
                 break;
 
             default:
